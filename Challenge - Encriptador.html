@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel ="stylesheet" href="css/style.css">
+		<title>Challege One Oracle - Grupo 5</title>
+	</head>
+	<body>
+		<div class="container"> 
+		
+			<div class= "imgTitulo">
+			<img src="images/iconoTitulo.jpeg">
+			</div>
+			
+			<input value="" placeholder="Por favor ingrese el texto aquí" id="inputValue" class="cajaTexto">
+			<div class="containerBotonEncDesc">		
+			<button onclick="javascript:encriptar()" class="botonEnc">Encriptar</button>
+			<button onclick="javascript:desencriptar()" class="botonDesc">Desencriptar</button>
+			</div>
+			
+			
+			
+			<div class="bgResultado">
+			</div>
+				<div class= "imgSinTexto" id="imagen">
+				<img src="images/iconoSinTexto.jpeg" >
+				</div>
+				<div class= "imgExito" id="imagen2">
+				<img src="images/exito.png" >
+				</div>
+			<div class="containerNoInfo" id="ningunMensaje">
+			<text class="noInfo" >Ningún mensaje fue encontrado</text>
+			</div>
+			<textarea value="" id="inputResult" class="cajaRespuesta" readonly="true"></textarea>
+			
+			<div class="containerBotonCopia">	
+			<button onclick="javascript:copiar()" class="botonCopia" id="botonCopiar" >Copiar</button>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script>
+	
+	function encriptar(){
+	 var texto = document.getElementById("inputValue").value.toLowerCase();
+	 console.log("inputValue: " + texto);
+	 var textoCifrado = texto;
+	 textoCifrado = textoCifrado.replace(/e/igm,"enter");
+	 textoCifrado = textoCifrado.replace(/i/igm,"imes");
+	 textoCifrado = textoCifrado.replace(/a/igm,"ai");
+	 textoCifrado = textoCifrado.replace(/o/igm,"ober");
+	 textoCifrado = textoCifrado.replace(/u/igm,"ufat");
+	 console.log("inputResult: " + textoCifrado);
+	 document.getElementById("inputResult").value = textoCifrado;
+	 if (textoCifrado != ""){
+	
+	  document.getElementById("inputResult").style.display = "flex";
+	  document.getElementById("ningunMensaje").style.display = "none";
+	  document.getElementById("imagen").style.display = "none";
+	  document.getElementById("imagen2").style.display = "flex";
+	 }else{
+	 document.getElementById("inputResult").style.display = "none";
+	  document.getElementById("ningunMensaje").style.display = "flex";
+	  document.getElementById("imagen").style.display = "flex";
+	  document.getElementById("imagen2").style.display = "none";
+	 };
+	 
+	}
+	
+	function desencriptar(){
+	 var textoCifrado = document.getElementById("inputValue").value.toLowerCase();
+	 console.log("inputValue: " + textoCifrado);
+	 var texto = textoCifrado;
+	 texto = texto.replace(/enter/igm,"e");
+	 texto = texto.replace(/imes/igm,"i");
+	 texto = texto.replace(/ai/igm,"a");
+	 texto = texto.replace(/ober/igm,"o");
+	 texto = texto.replace(/ufat/igm,"u");
+	 console.log("inputResult: " + texto);
+	 document.getElementById("inputResult").value = texto;
+	 if (texto != ""){	
+	  document.getElementById("inputResult").style.display = "flex";
+	  document.getElementById("ningunMensaje").style.display = "none";
+	  document.getElementById("imagen").style.display = "none";
+	  document.getElementById("imagen2").style.display = "flex";
+	 }else{
+	 document.getElementById("inputResult").style.display = "none";
+	  document.getElementById("ningunMensaje").style.display = "flex";
+	  document.getElementById("imagen").style.display = "flex";
+	  document.getElementById("imagen2").style.display = "none";
+	 };
+	}
+	
+	function copiar(){
+		let textoCopiado = "";
+		textoCopiado = document.getElementById("inputResult").value;
+		navigator.clipboard.writeText(textoCopiado);
+		if (textoCopiado != "") {
+		textoCopiado = document.getElementById("botonCopiar").text = "Copiado!";
+		};
+	}
+</script>
